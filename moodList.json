@@ -1,0 +1,42 @@
+[
+    {
+        "moodEmoji" : "😊",
+        "moodName" : "Happy face"
+    },
+    {
+        "moodEmoji" : "😟",
+        "moodName" : "Sad face"
+    },
+    {
+        "moodEmoji" : "😐",
+        "moodName" : "Neutral face"
+    },
+    {
+        "moodEmoji" : "😃",
+        "moodName" : "Excited face"
+    },
+    {
+        "moodEmoji" : "😫",
+        "moodName" : "Tired face"
+    },
+    {
+        "moodEmoji" : "😠",
+        "moodName" : "Angry face"
+    },
+    {
+        "moodEmoji" : "😆",
+        "moodName" : "Content face"
+    },
+    {
+        "moodEmoji" : "😟",
+        "moodName" : "Anxious face"
+    },
+    {
+        "moodEmoji" : "😰",
+        "moodName" : "Stressed face"
+    },
+    {
+        "moodEmoji" : "😌",
+        "moodName" : "Calm face"
+    }
+]
