@@ -1,24 +1,36 @@
-import moodData from '../../../moodList.json'
+import moodData from "../../../moodList.json";
 
-export default function MoodHistoryCard({mood, date, userPrefersDark }) {
-    function getEmojiByMoodName(moodName) {
-        // Iterate through the array to find the matching mood
-        for (let i = 0; i < moodData.length; i++) {
-            if (moodData[i].moodName === moodName) {
-                return moodData[i].moodEmoji;
-            }
-        }
+export default function MoodHistoryCard({
+  mood,
+  date,
+  userPrefersDark,
+  onBtnClick,
+  setSelectedMood,
+}) {
+  function getEmojiByMoodName(moodName) {
+    // Iterate through the array to find
+    for (let i = 0; i < moodData.length; i++) {
+      if (moodData[i].moodName === moodName) {
+        return moodData[i].moodEmoji;
+      }
     }
-    const moodEmoji = getEmojiByMoodName(mood.moodName);
-    const moodName = mood.moodName.replace(" face", "")
+  }
+  const moodEmoji = getEmojiByMoodName(mood.moodName);
+  const moodName = mood.moodName.replace(" face", "");
   return (
     <div className="p-3 grid bg-[#eeeeee]/[0.5] rounded-2xl gap-3 grid-flow-col items-center grid-cols-[auto_1fr_auto]">
-      <span className='text-2xl'>{moodEmoji}</span>
+      <span className="text-2xl">{moodEmoji}</span>
       <div>
         <h6 className="font-bold text-xl peer">{moodName}</h6>
         <p className="text-xl peer-[]:mt-2">{date}</p>
       </div>
-      <button className="ml-auto">
+      <button
+        onClick={() => {
+          onBtnClick(true);
+          setSelectedMood(mood);
+        }}
+        className="ml-auto"
+      >
         <svg
           width="24"
           height="24"

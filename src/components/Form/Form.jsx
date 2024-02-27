@@ -16,31 +16,31 @@ export default function Form({ classname, onNewUserMoodData, moodData }) {
   const [userMood, setUserMood] = useState(null);
   const [miscText, setMiscText] = useState("");
   function handleFormSubmit(e) {
-    e.preventDefault();
-    if (!userMood) return;
-    const existingEntryIndex = moodData.findIndex(
-      (entry) => entry.date === dateValue
+  e.preventDefault();
+  if (!userMood) return;
+  const existingEntryIndex = moodData.findIndex(
+    (entry) => entry.date === dateValue
+  );
+  let updatedMoodData;
+  if (existingEntryIndex !== -1) {
+    updatedMoodData = moodData.map((entry, index) =>
+      index === existingEntryIndex
+        ? { ...entry, moodName: userMood, miscText: miscText }
+        : entry
     );
-    if (existingEntryIndex !== -1) {
-      onNewUserMoodData((prevState) =>
-        prevState.map((entry, index) =>
-          index === existingEntryIndex
-            ? { ...entry, moodName: userMood, miscText: miscText }
-            : entry
-        )
-      );
-    } else {
-      let newEntry = {
-        date: dateValue,
-        moodName: userMood,
-        miscText: miscText,
-      };
-      onNewUserMoodData((prevState) => [...prevState, newEntry]);
-    }
-    localStorage.setItem('moodHistoryItems', JSON.stringify(moodData));
-    setUserMood(null);
-    setMiscText("");
+  } else {
+    let newEntry = {
+      date: dateValue,
+      moodName: userMood,
+      miscText: miscText,
+    };
+    updatedMoodData = [...moodData, newEntry];
   }
+  onNewUserMoodData(updatedMoodData);
+  localStorage.setItem('moodHistoryItems', JSON.stringify(updatedMoodData));
+  setUserMood(null);
+  setMiscText("");
+}
   return (
     <form
       className={`${classname} flex flex-col gap-12`}
