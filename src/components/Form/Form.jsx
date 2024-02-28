@@ -43,11 +43,11 @@ export default function Form({ classname, onNewUserMoodData, moodData }) {
 }
   return (
     <form
-      className={`${classname} flex flex-col gap-12`}
+      className={`${classname} flex flex-col gap-12 md:gap-5`}
       onSubmit={(e) => handleFormSubmit(e)}
     >
-      <div className="flex flex-col gap-4">
-        <label htmlFor="date" className="text-2xl">
+      <div className="flex flex-col gap-4 md:gap-2">
+        <label htmlFor="date" className="text-2xl md:text-xl">
           Date
         </label>
         <input
@@ -59,9 +59,9 @@ export default function Form({ classname, onNewUserMoodData, moodData }) {
           value={dateValue}
         />
       </div>
-      <div className="flex flex-col gap-4">
-        <p className="text-2xl">Your Mood</p>
-        <div className="flex gap-8 flex-wrap">
+      <div className="flex flex-col gap-4 md:gap-2">
+        <p className="text-2xl md:text-xl">Your Mood</p>
+        <div className="flex gap-8 flex-wrap md:gap-4">
           {moods.map((mood, index) => {
             return (
               <MoonRadioInput
@@ -75,8 +75,8 @@ export default function Form({ classname, onNewUserMoodData, moodData }) {
           })}
         </div>
       </div>
-      <div className="flex flex-col gap-4">
-        <label htmlFor="date" className="text-2xl">
+      <div className="flex flex-col gap-4 md:gap-2">
+        <label htmlFor="date" className="text-2xl md:text-xl">
           Additional Info? <small>(Optional)</small>
         </label>
         <textarea

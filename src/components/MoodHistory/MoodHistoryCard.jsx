@@ -21,7 +21,7 @@ export default function MoodHistoryCard({
     <div className="p-3 grid bg-[#eeeeee]/[0.5] rounded-2xl gap-3 grid-flow-col items-center grid-cols-[auto_1fr_auto]">
       <span className="text-2xl">{moodEmoji}</span>
       <div>
-        <h6 className="font-bold text-xl peer">{moodName}</h6>
+        <h6 className="font-bold text-xl peer md:text-l">{moodName}</h6>
         <p className="text-xl peer-[]:mt-2">{date}</p>
       </div>
       <button
