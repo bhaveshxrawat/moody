@@ -4,14 +4,48 @@ import MoodHistoryCardModal from "./MoodHistory/MoodHistoryCardModal";
 
 import Form from "./Form/Form";
 import MoodHistoryCard from "./MoodHistory/MoodHistoryCard";
+import localforage from "localforage";
 
-const userMoodData = localStorage.getItem("moodHistoryItems")
-  ? JSON.parse(localStorage.getItem("moodHistoryItems"))
-  : [];
-  
+
+const migStatus = localforage.createInstance({
+  name: "migrationStatus",
+})
+const userLocalData = localforage.createInstance({
+  name: "mlUserData",
+})
+
+function setMigration(bool) {
+  migStatus.setItem("migrated", bool);
+}
+
+const userMoodData = JSON.parse(localStorage.getItem("moodHistoryItems"))
+
+
+// migrate moodData from localStorage to localforage
+if (userMoodData) {  //if a user has data in localStorage
+  userLocalData.setItem("moodHistoryItems", userMoodData)
+    .then(() => {
+      localStorage.clear();
+      setMigration(true);
+    })
+    .then(() => console.log("migration complete"))
+    .catch(err => console.log(err));
+} else if (userMoodData === null) {
+  migStatus.getItem("migrated").then((val) => {
+    if (!val) {
+      setMigration(true);
+      userLocalData.setItem("moodHistoryItems", [])
+    }
+  })
+}
   export default function Main({ userPrefers }) {
-    const [newUserMoodData, setNewUserMoodData] = useState(userMoodData);
-    const [modalIsOpen, setModalIsOpen] = useState(true);
+    userLocalData.getItem("moodHistoryItems").then((v) => {
+      setNewUserMoodData(v)
+    }).catch((e) => {
+      console.log(e);
+    });
+    const [newUserMoodData, setNewUserMoodData] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedMood, setSelectedMood] = useState(null);
   return (
     <>
@@ -20,7 +54,7 @@ const userMoodData = localStorage.getItem("moodHistoryItems")
           <h3 className="text-4xl font-bold md:text-2xl">My Mood History</h3>
           <div className="mt-6 overflow-y-auto">
             <div className="grid gap-5 grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))]">
-              {newUserMoodData.map((mood, key) => {
+              {newUserMoodData?.map((mood, key) => {
                 return (
                   <MoodHistoryCard
                     onBtnClick={setModalIsOpen}
@@ -42,7 +76,8 @@ const userMoodData = localStorage.getItem("moodHistoryItems")
           <Form
             classname="mt-9"
             onNewUserMoodData={setNewUserMoodData}
-            moodData={newUserMoodData}
+            newUserMoodData={newUserMoodData}
+            userLocalData={userLocalData}
           />
         </div>
       </main>

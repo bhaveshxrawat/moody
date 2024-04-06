@@ -2,7 +2,7 @@ import { useState } from "react";
 import MoonRadioInput from "./Form.MoodRadioInput";
 import moods from "../../../moodList.json";
 
-export default function Form({ classname, onNewUserMoodData, moodData }) {
+export default function Form({ classname, onNewUserMoodData, newUserMoodData, userLocalData }) {
   function formatDateValue() {
     const theDate = new Date();
     const thisDate = theDate.getDate();
@@ -18,12 +18,12 @@ export default function Form({ classname, onNewUserMoodData, moodData }) {
   function handleFormSubmit(e) {
   e.preventDefault();
   if (!userMood) return;
-  const existingEntryIndex = moodData.findIndex(
+  const existingEntryIndex = newUserMoodData.findIndex(
     (entry) => entry.date === dateValue
   );
   let updatedMoodData;
   if (existingEntryIndex !== -1) {
-    updatedMoodData = moodData.map((entry, index) =>
+    updatedMoodData = newUserMoodData.map((entry, index) =>
       index === existingEntryIndex
         ? { ...entry, moodName: userMood, miscText: miscText }
         : entry
@@ -34,10 +34,10 @@ export default function Form({ classname, onNewUserMoodData, moodData }) {
       moodName: userMood,
       miscText: miscText,
     };
-    updatedMoodData = [...moodData, newEntry];
+    updatedMoodData = [...newUserMoodData, newEntry];
   }
   onNewUserMoodData(updatedMoodData);
-  localStorage.setItem('moodHistoryItems', JSON.stringify(updatedMoodData));
+  userLocalData.setItem('moodHistoryItems', updatedMoodData);
   setUserMood(null);
   setMiscText("");
 }
