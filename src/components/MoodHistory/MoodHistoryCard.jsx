@@ -1,4 +1,4 @@
-import moodData from "../../../moodList.json";
+import { getEmojiByMoodName } from "../../utils";
 
 export default function MoodHistoryCard({
   mood,
@@ -7,14 +7,7 @@ export default function MoodHistoryCard({
   onBtnClick,
   setSelectedMood,
 }) {
-  function getEmojiByMoodName(moodName) {
-    // Iterate through the array to find
-    for (let i = 0; i < moodData.length; i++) {
-      if (moodData[i].moodName === moodName) {
-        return moodData[i].moodEmoji;
-      }
-    }
-  }
+  
   const moodEmoji = getEmojiByMoodName(mood.moodName);
   const moodName = mood.moodName.replace(" face", "");
   return (
