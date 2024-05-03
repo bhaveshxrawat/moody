@@ -1,4 +1,5 @@
 import { getEmojiByMoodName } from "../../utils";
+import {motion} from "framer-motion"
 
 export default function MoodHistoryCard({
   mood,
@@ -11,7 +12,11 @@ export default function MoodHistoryCard({
   const moodEmoji = getEmojiByMoodName(mood.moodName);
   const moodName = mood.moodName.replace(" face", "");
   return (
-    <div className="p-3 grid bg-[#eeeeee]/[0.5] rounded-2xl gap-3 grid-flow-col items-center grid-cols-[auto_1fr_auto]">
+    <motion.div
+      initial={{ opacity:0, scale: 0.7 }}
+      transition={{ ease: "easeIn", delay: 0.2}}
+      animate={{ opacity:1, scale: 1 }}
+      className="p-3 grid bg-[#eeeeee]/[0.5] rounded-2xl gap-3 grid-flow-col items-center grid-cols-[auto_1fr_auto]">
       <span className="text-2xl">{moodEmoji}</span>
       <div>
         <h6 className="font-bold text-xl peer md:text-l">{moodName}</h6>
@@ -47,6 +52,6 @@ export default function MoodHistoryCard({
           />
         </svg>
       </button>
-    </div>
+    </motion.div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import MoodHistoryCardModal from "./MoodHistory/MoodHistoryCardModal";
+import { motion } from "framer-motion";
 
 import Form from "./Form/Form";
 import MoodHistoryCard from "./MoodHistory/MoodHistoryCard";
@@ -50,7 +51,13 @@ if (userMoodData) {  //if a user has data in localStorage
   return (
     <>
       <main className="flex p-5 gap-5 md:p-4 md:flex-col">
-        <div className="flex-1 border-2 border-[#E5E7EB] rounded-3xl p-6 md:p-4 md:max-h-[35vh] overflow-y-clip grid grid-rows-[auto,_1fr]">
+        <motion.div 
+          initial={{ opacity:0, x:-15 }}
+          animate={{ opacity:1, x:0 }}
+          transition={{
+            duration: 0.3
+          }}
+          className="flex-1 border-2 border-[#E5E7EB] rounded-3xl p-6 md:p-4 md:max-h-[35vh] overflow-y-clip grid grid-rows-[auto,_1fr]">
           <h3 className="text-4xl font-bold md:text-2xl">My Mood History</h3>
           <div className="mt-6 overflow-y-auto">
             <div className="grid gap-5 grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))]">
@@ -68,8 +75,14 @@ if (userMoodData) {  //if a user has data in localStorage
               })}
             </div>
           </div>
-        </div>
-        <div className="flex-1 py-6">
+        </motion.div>
+        <motion.div 
+          initial={{ opacity:0, x:15 }}
+          animate={{ opacity:1, x:0 }}
+          transition={{
+            duration: 0.3
+          }} 
+          className="flex-1 py-6">
           <h4 className="relative before:absolute before:w-[70%] before:h-[1px] before:bg-[#646464] before:bottom-0 before:left-0 pb-[10px] inline-block font-bold text-[2rem] select-none md:text-xl">
             How did your day went?
           </h4>
@@ -79,7 +92,7 @@ if (userMoodData) {  //if a user has data in localStorage
             newUserMoodData={newUserMoodData}
             userLocalData={userLocalData}
           />
-        </div>
+        </motion.div>
       </main>
       {modalIsOpen && selectedMood && createPortal(<MoodHistoryCardModal mood={selectedMood} setSelectionMood={setSelectedMood} onDismiss={()=>setModalIsOpen(false)} />, document.body)}
     </>
