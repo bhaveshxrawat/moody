@@ -94,7 +94,7 @@ if (userMoodData) {  //if a user has data in localStorage
           />
         </motion.div>
       </main>
-      {modalIsOpen && selectedMood && createPortal(<MoodHistoryCardModal mood={selectedMood} setSelectionMood={setSelectedMood} onDismiss={()=>setModalIsOpen(false)} />, document.body)}
+      {createPortal(<MoodHistoryCardModal active={modalIsOpen} mood={selectedMood} setSelectionMood={setSelectedMood} onDismiss={()=>setModalIsOpen(false)} />, document.body)}
     </>
   );
 }

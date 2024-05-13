@@ -1,12 +1,12 @@
 import { getEmojiByMoodName } from "../../utils";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function MoodHistoryCardModal({onDismiss, mood, setSelectionMood}) {
-  const moodEmoji = getEmojiByMoodName(mood.moodName);
-  const moodName = mood.moodName.replace(" face", "");
+export default function MoodHistoryCardModal({onDismiss, mood, setSelectionMood, active}) {
+  const moodEmoji = getEmojiByMoodName(mood?.moodName);
+  const moodName = mood?.moodName.replace(" face", "");
   return (
     <AnimatePresence>
-      <motion.div 
+      {mood && active && <motion.div 
         key="modal"
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }}
@@ -35,7 +35,7 @@ export default function MoodHistoryCardModal({onDismiss, mood, setSelectionMood}
             }} className="absolute top-5 right-5">x</button>
       
         </motion.div>
-      </motion.div>
+      </motion.div>}
     </AnimatePresence>
   );
 }
