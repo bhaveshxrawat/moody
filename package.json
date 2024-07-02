@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@openpanel/web": "^0.0.9-beta",
     "framer-motion": "^11.1.7",
     "localforage": "^1.10.0",
     "react": "^18.2.0",
