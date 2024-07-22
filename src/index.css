@@ -17,5 +17,5 @@
 }
 
 .login-btn {
-  @apply flex items-center gap-3 bg-[rgba(0,0,0,0.04)] p-[0.625rem] rounded-xl text-2xl;
+  @apply flex items-center gap-3 bg-[#f5f5f5] p-[0.625rem] rounded-xl text-2xl;
 }
