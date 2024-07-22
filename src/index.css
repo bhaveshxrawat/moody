@@ -5,11 +5,17 @@
 :root:has(#site-appearance[aria-checked="true"]) {
   color-scheme: dark;
 }
+
 :root:has(#site-appearance[aria-checked="false"]) {
   color-scheme: light;
 }
+
 @layer base {
-    html {
-        font-family: 'DM Sans', ui-system;
-    }
+  html {
+    font-family: 'DM Sans', ui-system;
   }
+}
+
+.login-btn {
+  @apply flex items-center gap-3 bg-[rgba(0,0,0,0.04)] p-[0.625rem] rounded-xl text-2xl;
+}

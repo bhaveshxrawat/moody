@@ -2,10 +2,11 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import MoodHistoryCardModal from "./MoodHistory/MoodHistoryCardModal";
 import { motion } from "framer-motion";
-
+// import { Openpanel } from "@openpanel/web";
 import Form from "./Form/Form";
 import MoodHistoryCard from "./MoodHistory/MoodHistoryCard";
 import localforage from "localforage";
+
 
 
 const migStatus = localforage.createInstance({
