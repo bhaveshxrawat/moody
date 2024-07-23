@@ -1,3 +1,5 @@
+import SignoutBtn from "./ui/SignoutBtn";
+
 export default function Header({ userPrefers, onSetUserPreferDark }) {
   function handleToggle() {
     onSetUserPreferDark((s) => !s);
@@ -18,50 +20,52 @@ export default function Header({ userPrefers, onSetUserPreferDark }) {
         />
       </svg>
 
-      <button
-        id="site-appearance"
-        role="checkbox"
-        aria-checked={userPrefers}
-        onClick={handleToggle}
-        className="p-[10px] rounded-md bg-white"
-      >
-        {userPrefers ? (
-          <svg
-            width="37"
-            height="37"
-            viewBox="0 0 37 37"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="md:w-6 md:h-6"
-
-          >
-            <path
-              d="M18.5 2V5.3M18.5 31.7V35M6.83448 6.83451L9.16098 9.16101M27.839 27.839L30.1655 30.1655M2 18.5H5.3M31.7 18.5H35M9.16098 27.839L6.83448 30.1655M30.1655 6.83451L27.839 9.16101M25.1 18.5C25.1 22.1451 22.1451 25.1 18.5 25.1C14.8549 25.1 11.9 22.1451 11.9 18.5C11.9 14.8549 14.8549 11.9 18.5 11.9C22.1451 11.9 25.1 14.8549 25.1 18.5Z"
-              stroke="black"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        ) : (
-          <svg
-            width="37"
-            height="37"
-            viewBox="0 0 37 37"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="md:w-6 md:h-6"
-          >
-            <path
-              d="M18.5 2C16.312 4.18804 15.0827 7.15565 15.0827 10.25C15.0827 13.3444 16.312 16.312 18.5 18.5C20.688 20.688 23.6557 21.9173 26.75 21.9173C29.8444 21.9173 32.812 20.688 35 18.5C35 21.7634 34.0323 24.9535 32.2193 27.6669C30.4062 30.3803 27.8293 32.4952 24.8143 33.744C21.7993 34.9929 18.4817 35.3196 15.281 34.683C12.0803 34.0463 9.14031 32.4748 6.83275 30.1673C4.52518 27.8597 2.95371 24.9197 2.31705 21.719C1.68039 18.5183 2.00715 15.2007 3.256 12.1857C4.50484 9.17074 6.61969 6.5938 9.3331 4.78075C12.0465 2.96771 15.2366 2 18.5 2Z"
-              stroke="black"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        )}
-      </button>
+      <div className="flex items-center gap-10">
+        <SignoutBtn />
+        <button
+          id="site-appearance"
+          role="checkbox"
+          aria-checked={userPrefers}
+          onClick={handleToggle}
+          className="p-[10px] rounded-md bg-white"
+        >
+          {userPrefers ? (
+            <svg
+              width="37"
+              height="37"
+              viewBox="0 0 37 37"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="md:w-6 md:h-6"
+            >
+              <path
+                d="M18.5 2V5.3M18.5 31.7V35M6.83448 6.83451L9.16098 9.16101M27.839 27.839L30.1655 30.1655M2 18.5H5.3M31.7 18.5H35M9.16098 27.839L6.83448 30.1655M30.1655 6.83451L27.839 9.16101M25.1 18.5C25.1 22.1451 22.1451 25.1 18.5 25.1C14.8549 25.1 11.9 22.1451 11.9 18.5C11.9 14.8549 14.8549 11.9 18.5 11.9C22.1451 11.9 25.1 14.8549 25.1 18.5Z"
+                stroke="black"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          ) : (
+            <svg
+              width="37"
+              height="37"
+              viewBox="0 0 37 37"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="md:w-6 md:h-6"
+            >
+              <path
+                d="M18.5 2C16.312 4.18804 15.0827 7.15565 15.0827 10.25C15.0827 13.3444 16.312 16.312 18.5 18.5C20.688 20.688 23.6557 21.9173 26.75 21.9173C29.8444 21.9173 32.812 20.688 35 18.5C35 21.7634 34.0323 24.9535 32.2193 27.6669C30.4062 30.3803 27.8293 32.4952 24.8143 33.744C21.7993 34.9929 18.4817 35.3196 15.281 34.683C12.0803 34.0463 9.14031 32.4748 6.83275 30.1673C4.52518 27.8597 2.95371 24.9197 2.31705 21.719C1.68039 18.5183 2.00715 15.2007 3.256 12.1857C4.50484 9.17074 6.61969 6.5938 9.3331 4.78075C12.0465 2.96771 15.2366 2 18.5 2Z"
+                stroke="black"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+        </button>
+      </div>
     </header>
   );
 }
