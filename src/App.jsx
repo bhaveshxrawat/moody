@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import Auth from "./components/Auth";
 import supabase from "./utils/Supabase";
+import Homepage from "./components/Homepage";
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 export default function App() { 
@@ -23,7 +23,12 @@ export default function App() {
   }, [])
 
   if (!session) {
-    return (<Auth/>)
+    return (
+      <>
+        <Header userPrefers={userPrefersDark} onSetUserPreferDark={setUserPrefersDark}/>
+        <Homepage />
+      </>
+    )
   }
   else {
     return (

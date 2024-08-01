@@ -1,6 +1,6 @@
 import SignoutBtn from "./ui/SignoutBtn";
 
-export default function Header({ userPrefers, onSetUserPreferDark }) {
+export default function Header({ userPrefers, onSetUserPreferDark, session }) {
   function handleToggle() {
     onSetUserPreferDark((s) => !s);
   }
@@ -21,7 +21,7 @@ export default function Header({ userPrefers, onSetUserPreferDark }) {
       </svg>
 
       <div className="flex items-center gap-10">
-        <SignoutBtn />
+        {session ? <SignoutBtn /> : null}
         <button
           id="site-appearance"
           role="checkbox"
@@ -69,3 +69,4 @@ export default function Header({ userPrefers, onSetUserPreferDark }) {
     </header>
   );
 }
+ 
