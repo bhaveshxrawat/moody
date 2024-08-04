@@ -1,6 +1,6 @@
-const OnboardBtn = () => {
+const OnboardBtn = ({setModalActive}) => {
   return (
-    <button className="py-3 px-4 bg-[#151515] rounded-xl text-white">
+    <button onClick={()=>setModalActive(true)} className="py-3 px-4 bg-[#151515] rounded-xl text-white border border-white">
         Try the app!
     </button>
   )

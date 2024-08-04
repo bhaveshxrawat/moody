@@ -5,6 +5,27 @@
         <link rel="icon" type="image/svg+xml" href="/assets/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>MoodLoom</title>
+        <link
+            as="font"
+            rel="preload"
+            href="https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZOIHTWCBl0-8Q.woff2"
+            type="font/woff2"
+        />
+        <style>
+            @font-face {
+                font-family: "DM Sans";
+                font-weight: 100 1000;
+                src: url("https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZOIHTWCBl0-8Q.woff2")
+                    format("woff2");
+                font-display: swap;
+                font-style: normal;
+            }
+            body {
+                font-family: "DM Sans", system-ui, -apple-system,
+                    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+                    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            }
+        </style>
         <meta
             name="description"
             content="Capture your daily vibes with our fun Mood Tracker app! Track, trend, and tickle your mood musings. Explore highs, ride lows, and discover your emotional dance."
@@ -39,12 +60,6 @@
         <meta
             name="twitter:image"
             content="https://moodloom.vercel.app/assets/og-image.png"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap"
-            rel="stylesheet"
         />
     </head>
     <body>
