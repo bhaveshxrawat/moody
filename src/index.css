@@ -3,13 +3,47 @@
 @tailwind utilities;
 
 :root:has(#site-appearance[aria-checked="true"]) {
-  color-scheme: dark;
+    color-scheme: dark;
 }
 
 :root:has(#site-appearance[aria-checked="false"]) {
-  color-scheme: light;
+    color-scheme: light;
 }
 
 .login-btn {
-  @apply flex items-center gap-3 bg-[#f5f5f5] p-[0.625rem] rounded-xl text-2xl;
+    @apply flex items-center gap-3 p-[0.625rem] rounded-xl text-2xl;
+}
+
+.text-white .login-btn {
+    @apply bg-[rgba(255,255,255,0.04)];
+}
+
+.text-black .login-btn {
+    @apply bg-[rgba(0,0,0,0.04)];
+}
+
+.c-scale {
+    scale: 0.75;
+}
+
+.in-view {
+    transform: matrix(1, 0.05, -0.14, 0.99, 0, 0);
+    translate: 0 -5px;
+    @apply drop-shadow-2xl;
+    transition: transform 0.8s ease-in, translate 0.5s 0.6s ease-in,
+        filter 0.3s ease-in 0.7s;
+}
+
+.hero-image {
+    perspective: 300px;
+}
+
+@media (max-width: 42.1875rem) {
+    .c-scale {
+        scale: 0.95;
+    }
+
+    .in-view {
+        transform: rotate3d(1, 0, 0, 10deg);
+    }
 }

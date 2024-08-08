@@ -26,7 +26,7 @@ export default function App() {
     return (
       <>
         <Header userPrefers={userPrefersDark} onSetUserPreferDark={setUserPrefersDark}/>
-        <Homepage />
+        <Homepage userPrefers={userPrefersDark}/>
       </>
     )
   }
