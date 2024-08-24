@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import supabase from "./utils/Supabase";
 import Homepage from "./components/Homepage";
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const isInDevelopment = import.meta.env.VITE_DEV_MODE === 'true';
 
 export default function App() { 
   const [userPrefersDark, setUserPrefersDark] = useState(isDark);
@@ -22,19 +23,19 @@ export default function App() {
     return () => subscription.unsubscribe()
   }, [])
 
-  if (!session) {
+  if (session || isInDevelopment) {
+    return (
+      <>
+      <Header userPrefers={userPrefersDark} onSetUserPreferDark={setUserPrefersDark}/>
+      <Main userPrefers={userPrefersDark}/>
+    </>)
+  }
+  else {
     return (
       <>
         <Header userPrefers={userPrefersDark} onSetUserPreferDark={setUserPrefersDark}/>
         <Homepage userPrefers={userPrefersDark}/>
       </>
     )
-  }
-  else {
-    return (
-      <>
-      <Header userPrefers={userPrefersDark} onSetUserPreferDark={setUserPrefersDark}/>
-      <Main userPrefers={userPrefersDark}/>
-    </>)
   }
 }
